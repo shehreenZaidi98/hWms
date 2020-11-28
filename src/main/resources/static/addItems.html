@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Barcode Scanner</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <nav style="border-bottom:1px solid #333 ;">
+        <h6 class="float-left">Medicine Stock</h6>
+        <button class="btn float-right my-1 mr-3" style="color: #fff;border-radius:20px ;" style="font-family: Calibri;"><b>Logout<i class="fas fa-sign-out-alt ml-2"></i></b></button>
+    </nav>
+    <div class="sideNavbar">
+        <ul>
+            <li class="myActive" onclick="openSub(this)">
+                <div class="myflex">
+                    <div style="width:30px;margin-right: 5px;"><i class="fas fa-chevron-circle-left mt-1"></i></div>
+                    <div style="width:40px;text-align: left;margin-right: 5px;"><span>IN</span></div>
+                </div>
+                
+            </li>
+            <li class="submenu" style="height: 90px;">
+                <div class="text-left pl-2">
+                    <div class="py-1 pl-2 activeLink" onclick="location.href ='in.html'" >Today's stock</div>
+                    <div class="py-1 pl-2" onclick="location.href = 'addItems.html'" style="color: #fff;" >Add item</div>
+                    <div class="py-1 pl-2 activeLink" onclick="location.href ='totalProductionIn.html'">Total Stock</div>
+                </div>
+            </li>
+            <li onclick="openSub(this)">
+                <div class="myflex">
+                    <div style="width:30px;margin-right: 5px;"><i class="fas fa-chevron-circle-right mt-1"></i></div>
+                    <div style="width:40px;text-align: left;margin-right: 5px;"><span>OUT</span></div>
+                </div>
+            </li>
+            <li class="submenu">
+                <div class="text-left pl-2">
+                    <div class="py-1 pl-2" onclick="location.href = 'out.html'">Purchase Items</div>
+                    <div class="py-1 pl-2" onclick="location.href ='todayPD.html'">Today Purchase Data</div>
+                    <div class="py-1 pl-2" onclick="location.href ='totalProductionOut.html'" >Total Purchase</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    <div class="wrapper py-4">
+        <div class="container-fluid">
+            <div class="myBox">
+                <div class="flex">
+                    <h4 class="mb-4">Barcode Data</h4>
+                    <select class="myselect">
+                        <option value="today">Today</option>
+                        <option value="yesterday">Yesterday</option>
+                        <option value="this_month">This month</option>
+                        <option value="this_year">This year</option>
+                    </select>
+                </div>
+                <div class="my-3 inputDiv" style="display: flex; justify-content: space-between; align-items: center;">
+                    <div>
+                        <input type="text" id="barcode" placeholder="Enter barcode" oninput="document.getElementById('quantity').value = 1" value="" class="field" autofocus>
+                    </div>
+                    <div>
+                        <input type="text" id="productName" placeholder="Enter product name" class="field">
+                    </div>
+                    <div>
+                        <input type="number" id="quantity" placeholder="Enter quantity" class="field">
+                    </div>
+                    <div>
+                        <input type="number" id="size" placeholder="Enter size" class="field">
+                    </div>
+                    <div>
+                        <input type="button" id="add" onclick="inData()" value="add" class="myBtn" >
+                    </div>
+                </div>
+                <div class="table-responsive">
+                    <table class="myTable">
+                        <thead>
+                            <tr>
+                                <th>Sr No.</th>
+                                <th>Barcode</th>
+                                <th>Product Name</th>
+                                <th>Quantity</th>
+                                <th>Size</th>
+                                <th>Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody id="productTable">
+<!--                            <tr>-->
+<!--                                <td>1</td>-->
+<!--                                <td>925645122398</td>-->
+<!--                                <td>Copy 1</td>-->
+<!--                                <td><span class="btn decrease">-</span><span id="sizeValue">20</span><span class="btn increase">+</span></td>-->
+<!--                                <td>20</td>-->
+<!--                                <td><i class="fas fa-times-circle" onclick="deleteRow(this)"></i></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>2</td>-->
+<!--                                <td>925645456399</td>-->
+<!--                                <td>Copy 2</td>-->
+<!--                                <td><span class="btn decrease">-</span><span id="sizeValue">20</span><span class="btn increase">+</span></td>-->
+<!--                                <td>10</td>-->
+<!--                                <td><i class="fas fa-times-circle" onclick="deleteRow(this)"></i></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>3</td>-->
+<!--                                <td>925645122408</td>-->
+<!--                                <td>Copy 1</td>-->
+<!--                                <td><span class="btn decrease">-</span><span id="sizeValue">20</span><span class="btn increase">+</span></td>-->
+<!--                                <td>20</td>-->
+<!--                                <td><i class="fas fa-times-circle" onclick="deleteRow(this)"></i></td>-->
+<!--                            </tr>-->
+<!--                            <tr>-->
+<!--                                <td>4</td>-->
+<!--                                <td>925645454198</td>-->
+<!--                                <td>Copy 2</td>-->
+<!--                                <td><span class="btn decrease">-</span><span id="sizeValue">20</span><span class="btn increase">+</span></td>-->
+<!--                                <td>10</td>-->
+<!--                                <td><i class="fas fa-times-circle" onclick="deleteRow(this)"></i></td>-->
+<!--                            </tr>-->
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row text-center py-2">
+                    <button class="btn bg-theme text-light" onclick="putData()">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    <script src="api.js"></script>
+</body>
+
+</html>
